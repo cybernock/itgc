@@ -1,12 +1,498 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITGC / SOX Audit Training Program</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITGC / SOX Audit Training | March 2026</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: linear-gradient(145deg, #f0f4fa 0%, #e6ecf5 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      line-height: 1.5;
+      color: #1e2b3c;
+    }
+
+    .training-card {
+      max-width: 1300px;
+      width: 100%;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(4px);
+      border-radius: 3rem 3rem 2rem 2rem;
+      box-shadow: 0 25px 45px -12px rgba(0,20,50,0.3);
+      padding: 2.5rem 2.2rem;
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(145deg, #0a2942, #1b4a7a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    h1 i {
+      background: #1e3b5c;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 14px rgba(0,60,130,0.2);
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #2c4c73;
+      margin-bottom: 2rem;
+      border-left: 5px solid #2a73ff;
+      padding-left: 1.2rem;
+      font-weight: 400;
+      background: rgba(42, 115, 255, 0.04);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      background: white;
+      padding: 1.5rem 2rem;
+      border-radius: 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 20px rgba(0,20,40,0.08);
+      border: 1px solid rgba(0,70,150,0.1);
+    }
+
+    .badge-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+    }
+
+    .badge-item i {
+      font-size: 1.6rem;
+      color: #1d4e8f;
+      width: 2rem;
+      text-align: center;
+    }
+
+    .badge-item strong {
+      font-weight: 600;
+      margin-right: 5px;
+      color: #0e2e4f;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 650;
+      margin: 2rem 0 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 3px solid rgba(42,115,255,0.3);
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title i {
+      color: #1d4e8f;
+      font-size: 2rem;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .concept-card {
+      background: white;
+      padding: 1.5rem 1.4rem;
+      border-radius: 1.8rem;
+      box-shadow: 0 8px 18px rgba(0,30,60,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid rgba(0,80,150,0.08);
+    }
+
+    .concept-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -8px rgba(0,60,130,0.15);
+    }
+
+    .concept-card h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #103a62;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .concept-card h4 i {
+      font-size: 1.3rem;
+      color: #2a73ff;
+    }
+
+    .concept-card p {
+      color: #2d4058;
+      font-size: 0.98rem;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 650px) {
+      .split-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .learn-card, .why-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem 2rem 2rem 2rem;
+      box-shadow: 0 10px 20px rgba(0,30,60,0.05);
+      border: 1px solid rgba(0,70,150,0.1);
+    }
+
+    .learn-card ul, .why-card ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .learn-card li, .why-card li {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .learn-card i.fa-check-circle {
+      color: #1e8f5c;
+      font-size: 1.4rem;
+      width: 1.8rem;
+    }
+
+    .why-card i.fa-star {
+      color: #f4b740;
+      font-size: 1.3rem;
+      width: 1.8rem;
+    }
+
+    .join-enroll {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0 1rem;
+    }
+
+    @media (max-width: 650px) {
+      .join-enroll {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .method-card, .contact-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 10px 20px rgba(0,30,60,0.05);
+      border: 1px solid rgba(0,70,150,0.1);
+    }
+
+    .meet-link-box {
+      background: #eef4fe;
+      border-radius: 1.5rem;
+      padding: 1.2rem;
+      margin: 1.2rem 0;
+      word-break: break-all;
+      border: 1px dashed #2a73ff;
+    }
+
+    .meet-link-box a {
+      color: #0a3982;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .meet-link-box a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #1a4f8b;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: none;
+      box-shadow: 0 8px 16px rgba(0,70,160,0.3);
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.8rem;
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    .btn:hover {
+      background: #0f3f72;
+      box-shadow: 0 6px 14px rgba(0,50,130,0.4);
+      transform: scale(1.02);
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.2rem;
+      background: #f6f9ff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 3rem;
+    }
+
+    .contact-line i {
+      width: 2rem;
+      font-size: 1.6rem;
+      color: #1d4e8f;
+    }
+
+    .contact-line a {
+      color: #1e3a5f;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-line a:hover {
+      text-decoration: underline;
+      color: #0a2e55;
+    }
+
+    .wa-link {
+      background: #25D36610;
+      border: 1px solid #25D36630;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #3e5f7e;
+      border-top: 1px solid rgba(0,60,130,0.15);
+      padding-top: 2rem;
+    }
+
+    .emph {
+      font-weight: 600;
+      color: #0e2e4f;
+    }
+
+    /* small extra */
+    .inline-icon {
+      margin-right: 6px;
+      color: #2a73ff;
+    }
+  </style>
+</head>
+<body>
+<div class="training-card">
+  
+  <!-- Header -->
+  <h1>
+    <i class="fas fa-book-open"></i> 
+    ITGC / SOX Audit Training
+  </h1>
+  <div class="subhead">
+    <i class="fas fa-cubes inline-icon"></i> ITGC • ITAC • SOX • ISO 27001 • COBIT • SAP Audit — with real‑world cases
+  </div>
+
+  <!-- Batch details card (prominent) -->
+  <div class="badge-row">
+    <div class="badge-item"><i class="fas fa-calendar-alt"></i> <span><strong>Start Date:</strong> 2nd March 2026</span></div>
+    <div class="badge-item"><i class="fas fa-clock"></i> <span><strong>Time:</strong> 9:00 AM – 10:00 AM</span></div>
+    <div class="badge-item"><i class="fas fa-video"></i> <span><strong>Mode:</strong> Online (Google Meet)</span></div>
+  </div>
+
+  <!-- Key Concepts (📚) -->
+  <div class="section-title">
+    <i class="fas fa-book"></i> Key Concepts Covered
+  </div>
+  <div class="concept-grid">
+    <!-- ITGC -->
+    <div class="concept-card">
+      <h4><i class="fas fa-server"></i> ITGC</h4>
+      <p>IT General Controls – Access management, change management, backups, and overall IT operational controls.</p>
+    </div>
+    <!-- ITAC -->
+    <div class="concept-card">
+      <h4><i class="fas fa-robot"></i> ITAC</h4>
+      <p>IT Application Controls – Input validation, processing controls, output controls inside business applications.</p>
+    </div>
+    <!-- SOX Compliance -->
+    <div class="concept-card">
+      <h4><i class="fas fa-balance-scale"></i> SOX Compliance</h4>
+      <p>Sarbanes–Oxley Act: internal controls over financial reporting, mandatory for public companies.</p>
+    </div>
+    <!-- ISO 27001 -->
+    <div class="concept-card">
+      <h4><i class="fas fa-shield-alt"></i> ISO 27001</h4>
+      <p>Information Security Management System (ISMS) – framework of policies and controls.</p>
+    </div>
+    <!-- COBIT -->
+    <div class="concept-card">
+      <h4><i class="fas fa-diagram-project"></i> COBIT Framework</h4>
+      <p>Governance and management framework for enterprise IT, aligning IT with business goals.</p>
+    </div>
+    <!-- SAP Audit -->
+    <div class="concept-card">
+      <h4><i class="fas fa-database"></i> SAP Audit</h4>
+      <p>Auditing SAP environments: security, segregation of duties, critical access, and change control.</p>
+    </div>
+    <!-- Real-Time Examples -->
+    <div class="concept-card">
+      <h4><i class="fas fa-chart-line"></i> Real-Time Examples</h4>
+      <p>Practical industry scenarios and case studies from real audit engagements.</p>
+    </div>
+  </div>
+
+  <!-- Two columns: What you will learn + Why join (🎯 ⭐) -->
+  <div class="split-grid">
+    <!-- Left: What you will learn -->
+    <div class="learn-card">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
+        <i class="fas fa-bullseye" style="font-size: 2rem; color:#1d4e8f;"></i>
+        <h3 style="font-size: 1.9rem; font-weight: 650;">What You'll Learn</h3>
+      </div>
+      <ul>
+        <li><i class="fas fa-check-circle"></i> ITGC and ITAC testing techniques</li>
+        <li><i class="fas fa-check-circle"></i> SOX compliance audit procedures</li>
+        <li><i class="fas fa-check-circle"></i> ISO 27001 security controls</li>
+        <li><i class="fas fa-check-circle"></i> COBIT governance principles</li>
+        <li><i class="fas fa-check-circle"></i> SAP audit methodology</li>
+        <li><i class="fas fa-check-circle"></i> Real‑world audit case studies</li>
+      </ul>
+    </div>
+    <!-- Right: Why join -->
+    <div class="why-card">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem;">
+        <i class="fas fa-star" style="font-size: 2rem; color:#f4b740;"></i>
+        <h3 style="font-size: 1.9rem; font-weight: 650;">Why Join</h3>
+      </div>
+      <ul>
+        <li><i class="fas fa-star"></i> Industry‑oriented training</li>
+        <li><i class="fas fa-star"></i> Practical real‑time scenarios</li>
+        <li><i class="fas fa-star"></i> Step‑by‑step guidance</li>
+        <li><i class="fas fa-star"></i> Career‑focused support</li>
+      </ul>
+      <div style="margin-top: 2rem; background: #eaf3ff; padding: 1rem; border-radius: 1.5rem; font-size: 1rem;">
+        <i class="fas fa-lightbulb" style="color:#1e4e7a; margin-right: 6px;"></i> 
+        <span class="emph">Limited batch size</span> – personal attention guaranteed.
+      </div>
+    </div>
+  </div>
+
+  <!-- Joining method + enrollment contact (💻 📞) -->
+  <div class="join-enroll">
+    <!-- left: Google Meet joining -->
+    <div class="method-card">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <i class="fas fa-video" style="font-size: 2rem; color:#1d4e8f;"></i>
+        <h3 style="font-size: 1.8rem; font-weight: 650;">Joining Method</h3>
+      </div>
+      <div class="meet-link-box">
+        <i class="fas fa-link" style="margin-right: 6px; color:#1d4e8f;"></i>
+        <strong>Video call link:</strong><br>
+        <a href="https://meet.google.com/ume-kfve-zhu" target="_blank">https://meet.google.com/ume-kfve-zhu</a>
+      </div>
+      <a href="https://meet.google.com/ume-kfve-zhu" target="_blank" class="btn">
+        <i class="fas fa-video"></i> Join Google Meet
+      </a>
+      <p style="margin-top: 1rem; color: #2d4b70;"><i class="fas fa-info-circle"></i> Sessions start at 9:00 AM (IST). Use the same link for all classes.</p>
+    </div>
+
+    <!-- right: Enrollment contact -->
+    <div class="contact-card">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <i class="fas fa-phone-alt" style="font-size: 2rem; color:#1d4e8f;"></i>
+        <h3 style="font-size: 1.8rem; font-weight: 650;">Enrollment</h3>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-line">
+          <i class="fas fa-user"></i> <span style="font-weight: 600; font-size: 1.4rem;">Sai</span>
+        </div>
+        <div class="contact-line">
+          <i class="fas fa-phone-alt"></i> 
+          <a href="tel:7331139555">7331139555</a> <span style="color:#2b4f72;">(Call)</span>
+        </div>
+        <div class="contact-line wa-link">
+          <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+          <a href="https://wa.me/917331139555?text=Hello%20Sai,%20I'm%20interested%20in%20the%20ITGC%20SOX%20Audit%20Training%20(March%202026)" target="_blank">
+            7331139555 on WhatsApp
+          </a>
+        </div>
+      </div>
+      <p style="background: #def1df; padding: 0.8rem; border-radius: 2rem; text-align: center; margin-top: 1.3rem;">
+        <i class="fab fa-whatsapp" style="color:#128C7E;"></i> <strong>WhatsApp available</strong> — quick reply
+      </p>
+      <p style="margin-top: 1rem; font-size: 0.98rem; background:#fef7e0; padding:0.8rem; border-radius:2rem;">
+        <i class="fas fa-calendar-check"></i> Reserve your spot now
+      </p>
+    </div>
+  </div>
+
+  <!-- one more mention of real‑time and SAP (from original description) -->
+  <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: space-between; background: #ffffffc9; border-radius: 2rem; padding: 1.5rem 2rem; margin: 2rem 0 0.5rem; border: 1px solid #a0c4ff;">
+    <span><i class="fas fa-check-circle" style="color: #1f7b4d;"></i> <strong>SAP Audit methodology</strong> &nbsp; | &nbsp; </span>
+    <span><i class="fas fa-check-circle" style="color: #1f7b4d;"></i> <strong>Real‑time industry examples</strong> &nbsp; | &nbsp; </span>
+    <span><i class="fas fa-check-circle" style="color: #1f7b4d;"></i> <strong>ITGC / ITAC hands-on</strong></span>
+  </div>
+
+  <!-- footer note with contact summary -->
+  <div class="footer-note">
+    <i class="fas fa-calendar-alt"></i> 2nd March 2026 · 9:00‑10:00 AM · Online · 
+    <i class="fas fa-phone"></i> Sai 7331139555 (WhatsApp) <br>
+    <span style="opacity: 0.8;">ITGC / SOX / ISO 27001 / COBIT / SAP Audit – career focused training</span>
+  </div>
+</div>
+</body>
 </html>
